@@ -25,5 +25,5 @@ function geoFindMe() {
 
   output.innerHTML = "<p>Locating…</p>";
 
-  navigator.geolocation.watchPosition(success, error, {maximumAge:600000, timeout:50000, enableHighAccuracy: true});
+  navigator.geolocation.getCurrentPosition(success, error, {maximumAge:600000, timeout:50000, enableHighAccuracy: true});
 }
