@@ -1,3 +1,7 @@
+var userPos;
+
+
+
 // Firebase setup
       var config = {
         apiKey: "AIzaSyA5bBv8X-eUGbjcBrb2dVdOY5BflatEozo",
@@ -17,36 +21,35 @@
      ref.on('value', gotData, errData);
    
 
+         function gotData(data){
+          console.log('data object', data.val());
+          var users = data.val();
+          var keys = Object.keys(users)
+          console.log(keys);
+          for (var i = 0; i < keys.length; i ++){
+            var k = keys[i];
 
-   function gotData(data){
-    console.log('data object', data.val());
-    var users = data.val();
-    var keys = Object.keys(users)
-    console.log(keys);
-    for (var i = 0; i < keys.length; i ++){
-      var k = keys[i];
+            var name = users[k].name;
+            var pos= users[k].pos;
 
-      var name = users[k].name;
-      var pos= users[k].pos;
-
-
-
-
-      console.log(users[k].name);
-      console.log(users[k].pos.lat);
-      console.log(users[k].pos.lng);
-      // var name = users[k].name;
-      // console.log(name, pos.lat);
-     
-
-    }
-   }
+            userPos= {lat: pos.lat, lng: pos.lng};
 
 
-   function errData(err){
-    console.log('Error!');
-    console.log(err);
-   }
+            console.log(users[k].name);
+            console.log(users[k].pos.lat);
+            console.log(users[k].pos.lng);
+            console.log(userPos);
+            // var name = users[k].name;
+            // console.log(name, pos.lat);
+           
+
+          }
+         }
+
+         function errData(err){
+          console.log('Error!');
+          console.log(err);
+         }
 
 
 // Google maps setup
@@ -75,6 +78,12 @@
             pos : pos
          }
         ref.push(data);
+
+        var userMarker = new google.maps.Marker({
+          position: userPos,
+          map: map
+        });
+
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('location found');
