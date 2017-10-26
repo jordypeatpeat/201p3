@@ -1,14 +1,10 @@
-body {
-  padding: 20px;
-  background-color:#ffffc9;
-  height: 100%;
-}
-
-p { margin : 0; }
-
-/* Always set the map height explicitly to define the size of the div
-* element that contains the map. */
+/* M A P*/
 #map {
-    height: 100%;
+height: 100%;
 }
 
+#maphtml, #mapbody {
+height: 100%;
+margin: 0;
+padding: 0;
+}
