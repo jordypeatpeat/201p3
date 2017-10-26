@@ -1,6 +1,7 @@
 body {
   padding: 20px;
-  background-color:#ffffc9
+  background-color:#ffffc9;
+  height: 100%;
 }
 
 p { margin : 0; }
@@ -10,3 +11,4 @@ p { margin : 0; }
 #map {
     height: 100%;
 }
+
