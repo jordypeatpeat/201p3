@@ -1,0 +1,35 @@
+[debug] [2017-10-26T00:11:02.734Z] ----------------------------------------------------------------------
+[debug] [2017-10-26T00:11:02.736Z] Command:       /usr/local/Cellar/node/8.2.1/bin/node /usr/local/bin/firebase serve
+[debug] [2017-10-26T00:11:02.736Z] CLI Version:   3.13.1
+[debug] [2017-10-26T00:11:02.736Z] Platform:      darwin
+[debug] [2017-10-26T00:11:02.736Z] Node Version:  v8.2.1
+[debug] [2017-10-26T00:11:02.737Z] Time:          Thu Oct 26 2017 13:11:02 GMT+1300 (NZDT)
+[debug] [2017-10-26T00:11:02.737Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-26T00:11:02.746Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-26T00:11:02.746Z] > authorizing via signed-in user
+[debug] [2017-10-26T00:11:02.748Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/looking-glass-mddn243  
+ Thu Oct 26 2017 13:11:02 GMT+1300 (NZDT)
+[debug] [2017-10-26T00:11:03.870Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-26T00:11:03.870Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/looking-glass-mddn243/tokens  
+ Thu Oct 26 2017 13:11:03 GMT+1300 (NZDT)
+[debug] [2017-10-26T00:11:04.917Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Guest/Desktop'...
+[info] 
+[debug] [2017-10-26T00:11:04.918Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/looking-glass-mddn243  
+ Thu Oct 26 2017 13:11:04 GMT+1300 (NZDT)
+[debug] [2017-10-26T00:11:06.619Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-26T00:11:06.619Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/706219830950/clients/_:getWebAppConfig  
+ Thu Oct 26 2017 13:11:06 GMT+1300 (NZDT)
+[debug] [2017-10-26T00:11:07.606Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-26T00:11:07.616Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (/usr/local/lib/node_modules/firebase-tools/lib/serve/hosting.js:34:17)
+    at Object.onceWrapper (events.js:314:30)
+    at emitNone (events.js:105:13)
+    at Server.emit (events.js:207:7)
+    at emitListeningNT (net.js:1346:10)
+    at _combinedTickCallback (internal/process/next_tick.js:135:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
