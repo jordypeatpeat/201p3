@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+	<head>
+		<title> Settings | Looking Glass </title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+        
+		<!-- Import Javascript -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!-- <script src="js/jqfloat.js"></script> -->
+
+		<!-- Material Design Lite -->
+	    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-orange.min.css">
+	    <!-- Material Design icon font -->
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	    <!-- Import Font Awesome Icons -->
+	    <script src="https://use.fontawesome.com/b21fc2e408.js"></script>
+		
+		
+	</head>
+	<body>
+	<div id="wrapper">
+
+
+
+
+
+
+<!-- Transparent header that draws on top of the layout's background -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header signinBG">
+
+    	<!-- MDL Progress Bar with Indeterminate Progress -->
+		<div id="progactive" class="mdl-js-progress	mdl-progress--indeterminate"></div>
+	
+
+      <header class="mdl-layout__header mdl-layout__header--seamed signinBG">
+        <div class="mdl-layout__header-row noSelect">
+        				<span class="mdl-layout-title grey"> // account settings </span>
+          <!-- Title -->
+          <span id="logo" class="mdl-layout-title logoS">
+          	<a class="aLogo logoS" href="index.html" title="Go to Title Page">
+          		<img src="images/logoWhite.png" height = '50px'> LOOKING GLASS
+          	</a>
+          </span>
+          
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+	        <nav class="mdl-navigation">
+		          <a href="map.html" class="mdl-navigation__link"> 
+		          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+				  	BACK TO MAP
+				  </button>
+				  </a>
+          	</nav>
+        </div>
+      </header>
+
+<!-- *************** -->
+
+		<br>
+		<br>
+		<br>
+
+		<div class="mdl-grid">
+
+			<div class="mdl-cell mdl-cell--1-col noBG">
+				<img id='profilePic' class='profilePic ppUpButton uploadButton' src="images/IcoProfileO.png">
+			</div>
+			<span for="profilePic" class="mdl-tooltip  mdl-tooltip--right">
+				<i class="material-icons">create</i> 
+			</span>
+		
+
+		
+			<div class="mdl-cell mdl-cell--4-col noBG">
+				<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				  <tbody>
+				  	<thead>
+				  		<th>
+				  		</th>
+				  		<th>
+				  			<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary">
+						  	 <b> Done </b>
+						   </button>
+				  		</th>
+				  	</thead>
+				    <tr>
+				      <td class="mdl-data-table__cell--non-numeric">Username</td>
+				      <td>
+				      	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input class="mdl-textfield__input" type="text" id="username">
+						    <label class="mdl-textfield__label" for="username"> StaceeeeyWillcox </label>
+						  </div>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td class="mdl-data-table__cell--non-numeric">Password</td>
+				      <td>
+				      	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input class="mdl-textfield__input" type="password" id="password">
+						    <label class="mdl-textfield__label" for="password"> *********** </label>
+						  </div>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td class="mdl-data-table__cell--non-numeric">Email</td>
+				      <td>
+				      	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email">
+						    <label class="mdl-textfield__label" for="email"> Staceeey@gmail.com </label>
+						  </div>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td class="mdl-data-table__cell--non-numeric">Birthday</td>
+				      <td>
+				      	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input class="mdl-textfield__input" type="date" id="bday">
+						    <label class="mdl-textfield__label" for="bday">  </label>
+						  </div>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td class="mdl-data-table__cell--non-numeric">Profile Type</td>
+				      <td>
+						  <button id="menu-speed" class="mdl-button mdl-js-button left">
+						     Casual Streamer
+						  </button>
+						  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--top-right" for="menu-speed">
+							 <li class="mdl-menu__item">Hosting Company</li>
+							 <li class="mdl-menu__item">Casual Host/Stream</li>
+							 <li class="mdl-menu__item">Casual Streamer</li>
+						  </ul>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td class="mdl-data-table__cell--non-numeric">Bio</td>
+				      <td>
+				      	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						  	<textarea class="mdl-textfield__input" type="text" rows= "3" id="bio"></textarea>
+						  	<label class="mdl-textfield__label red" for="bio"> I'm just a...
+						    </label>
+						 </div>
+						<span for="bio" class="mdl-tooltip  mdl-tooltip--right">
+						I'm just a university student who wants 
+						<br>to try something new. I use this site to 
+						<br>scout dodgy zones in the neighborhood 
+						<br>before I enter them and check the 
+						<br>traffic before driving into work. 
+						</span>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+	</div>
+		<!-- Javascript link -->
+		<script src="js/script.js"> </script>
+		<!-- ScrollReveal link -->
+		<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+	</body>
+</html>		
+		
