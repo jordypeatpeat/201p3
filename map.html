@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+	<head>
+		<title> Browsing | Looking Glass </title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+        
+		<!-- Import Javascript -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!-- <script src="js/jqfloat.js"></script> -->
+
+		<!-- Material Design Lite -->
+	    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-orange.min.css">
+	    <!-- Material Design icon font -->
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	    <!-- Import Font Awesome Icons -->
+	    <script src="https://use.fontawesome.com/b21fc2e408.js"></script>
+		
+		
+	</head>
+	<body>
+	<div id="wrapper">
+	<div id="cover">
+      	<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--12-col center noBG">
+				<!-- MDL Spinner Component -->
+				<div class="mdl-spinner mdl-js-spinner is-active"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+<!-- Transparent header that draws on top of the layout's background -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+
+	
+
+      <header class="mdl-layout__header mdl-layout__header--seamed">
+        <div class="mdl-layout__header-row noSelect">
+            <!-- Expandable Textfield -->
+			<form>
+			  <div id="navSearch" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+			    <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+			      <i class="material-icons">search</i>
+			    </label>
+			    <div class="mdl-textfield__expandable-holder">
+			      <input class="mdl-textfield__input" type="text" id="sample6">
+			      <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+			    </div>
+			  </div>
+			</form>
+          <!-- Title -->
+          <span id="logo" class="mdl-layout-title">
+          	<a class="aLogo" href="index.html" title="Go to Title Page">
+          		<img src="images/logoWhite.png" height = '50px'> LOOKING GLASS
+          	</a>
+          </span>
+          
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+	        <nav class="mdl-navigation">
+		          <a title="Profile" class="mdl-navigation__link"> <img id="button_profile" src="images/IcoProfileW.png"></a>
+		          <a title="Statistics" class="mdl-navigation__link"> <img id="button_stats" src="images/IcoStatsW.png"></a>
+		          <a title="Upload" class="mdl-navigation__link"> <img id="button_upload" src="images/IcoUploadW.png"></a>
+          	</nav>
+        </div>
+      </header>
+
+
+
+<!-- MARKER CARD -->
+
+			<div id="markerSide" class="mdl-card-wide mdl-card mdl-shadow--8dp cardGrid">
+			  <div class="mdl-card__title">
+			    <h2 class="mdl-card__title-text">Vivian Traffic (WCC)</h2>
+			  </div>
+			  <div class="mdl-card__supporting-text">
+			    Motorway exit onto Vivian traffic cam, hosted by Wellington City Council 
+			    <br>
+			    <i>User Rating:</i> <p class="stars starsMed inline noSelect"> &#9733; &#9733; &#9733; &#9733; &#9733;  </p>
+			    <form class="leftSpacing inline">
+				  <div class="mdl-textfield ratings mdl-js-textfield mdl-textfield--floating-label">
+				    <input class="mdl-textfield__input" type="text" pattern="[1-5]" max="5" min="1" id="rating">
+				    <label class="mdl-textfield__label" for="rating">rating...</label>
+				    <span class="mdl-textfield__error">Input is not a number!</span>
+				  </div>
+				</form>
+				<br>
+				<i> Connection: </i> <p class="hearts starsMed inline noSelect"> 
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite border</i>  
+			    </p>
+			  </div>
+			  <div class="mdl-card__actions mdl-card--border">
+			    <a id="streamButton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+			      <b> WATCH STREAM </b>
+			    </a>
+			    <button title="Report this stream" class="right mdl-button report mdl-js-button mdl-js-ripple-effect warning">
+	    			<i class="material-icons">warning</i>
+	    		</button>
+			  </div>
+			  <div class="mdl-card__menu">
+			    <button id="gotoPro" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+			      <img class='profilePic mini' src="images/IcoProfileO.png">
+			    </button>
+			  </div>
+			</div>
+
+
+			<span for="gotoPro" class="mdl-tooltip mdl-tooltip--large">
+			<p class="username"> WCC CCTV </p>
+			<p class="stars"> &#9733; &#9733; &#9733; &#9733; &#9733;  </p> 
+			</span>
+
+<!-- ************ -->
+
+
+
+
+
+<!-- OVERLAY SECTIONS -->
+
+      <div id="profile" class="overlay">
+      	<h1 id="HEADING"> // YOUR PROFILE </h1>
+      	<button id="exitProfile" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+		  <i class="material-icons">clear</i> 
+		</button>
+      	<br>
+      	<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--1-col">
+		  		<img class='profilePic' src="images/IcoProfileO.png">
+		  	</div>
+		  	<div class="mdl-cell mdl-cell--1-col">
+		  		<h2 class="name"> StaceeeeyWillcox </h2>
+		  		<h4 class="rating"> overall cam rating <p> (out of 23 total ratings) </p></h4>
+		  		<h1 class="stars"> &#9733; &#9733; &#9733; &#9733; &#9734;  </h1> 
+		  	</div>
+		  	<div class="mdl-cell mdl-cell--1-col">
+		  		<h4 class="smlHeading"> member since: </h4>
+		  		<h2 class="inline"> 12/2016 </h2>
+		  		<br>
+		  		<h4 class="smlHeading"> age: </h4>
+		  		<h2 class="inline"> 20 </h2>
+		 	</div>
+		 	<div class="mdl-cell mdl-cell--1-col">
+		 		<h4 class="smlHeading"> type: </h4>
+		  		<h2 class="inline"> Casual Streamer </h2>
+		  	</div>
+		  	<div class="mdl-cell mdl-cell--3-col">
+		 		<h4 class="smlHeading"> bio: </h4>
+		 		<p class="inline"> 
+		 			I'm just a university student who wants to try something new. I use this site to scout dodgy zones in the neighborhood before I enter them and check the traffic before driving into work.
+		 		</p>
+		 	</div>
+		</div>
+		<!-- BUTTONS -->
+      	<div class="mdl-grid center">
+			  <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+			  	<a href="settings.html">
+				<button class="mdl-button overlayButton mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+				  	SETTINGS
+				</button>
+				</a>
+			  </div>
+			  <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+				<button id="pbutton_stats" class="mdl-button overlayButton mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+				  	YOUR STATS
+				</button>
+			  </div>
+			  <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+			  	<a href="signin.html">
+				<button class="mdl-button overlayButton mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+				  	LOGOUT
+				</button>
+				</a>
+			  </div>
+		 </div>
+      </div>
+
+
+
+      <div id="profile2" class="overlay">
+      	<h1 id="HEADING"> // USER PROFILE
+      	<button id="exitP2" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+		  <i class="material-icons">clear</i> 
+		</button>       	
+      	
+      	</h1>
+      	<br>
+      	<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--1-col">
+		  		<img class='profilePic' src="images/IcoProfileO.png">
+		  	</div>
+		  	<div class="mdl-cell mdl-cell--1-col">
+		  		<h2 class="name"> WCC CCTV </h2>
+		  		<h4 class="rating"> overall cam rating <p> (out of 182 total ratings) </p></h4>
+		  		<h1 class="stars"> &#9733; &#9733; &#9733; &#9733; &#9733;  </h1> 
+		  	</div>
+		  	<div class="mdl-cell mdl-cell--1-col">
+		  		<h4 class="smlHeading"> member since: </h4>
+		  		<h2 class="inline"> 6/2016 </h2>
+		  		<br>
+		  		<h4 class="smlHeading"> age: </h4>
+		  		<h2 class="inline"> N/A </h2>
+		 	</div>
+		 	<div class="mdl-cell mdl-cell--1-col">
+		 		<h4 class="smlHeading"> type: </h4>
+		  		<h2 class="inline"> Hosting Company </h2>
+		  	</div>
+		 	<div class="mdl-cell mdl-cell--3-col">
+		 		<h4 class="smlHeading"> bio: </h4>
+		 		<p class="inline"> 
+		 			The official Wellington City Council account for Looking Glass. Hosts CCTV streams throughout Wellington CBD for traffic reports, crime capture and weather coverage.
+		 		</p>
+		 	</div>
+		</div>
+	  </div>
+
+
+
+
+      <div id="stats" class="overlay">
+      	<h1 id="HEADING"> // STATISTICS </h1>
+      	<button id="exitStats" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+		  <i class="material-icons">clear</i> 
+		</button>
+      	<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--12-col">
+				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect grey">
+				  <div class="mdl-tabs__tab-bar">
+				      <a href="#personal-panel" class="mdl-tabs__tab is-active white">PERSONAL</a>
+				      <a href="#regional-panel" class="mdl-tabs__tab white">REGIONAL</a>
+				      <a href="#global-panel" class="mdl-tabs__tab white">GLOBAL</a>
+				  </div>
+
+				  <div class="mdl-tabs__panel is-active" id="personal-panel">
+				  	<div class="mdl-grid">
+						<div class="mdl-cell mdl-cell--8-col">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--6-col">
+								  <button id="menu-sort" class="mdl-button mdl-js-button mdl-button--primary">
+								     Sort by:
+								  </button>
+								  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="menu-sort">
+									 <li class="mdl-menu__item">Top</li>
+									 <li class="mdl-menu__item">Lowest</li>
+									 <li class="mdl-menu__item">Popular</li>
+								  </ul>
+								</div>
+								<div class="mdl-cell mdl-cell--6-col">
+								  <button id="menu-show" class="mdl-button mdl-js-button mdl-button--primary">
+								     Show:
+								  </button>
+								  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="menu-show">
+									 <li class="mdl-menu__item">
+									 	Cameras
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+											<input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+									 <li class="mdl-menu__item">
+							 			Users
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+											<input type="checkbox" id="switch-2" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+									 <li class="mdl-menu__item">
+							 			Website
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
+											<input type="checkbox" id="switch-3" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+								  </ul>
+								 </div>
+							</div>
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col leftSpacing">
+									<h4 class="smlHeading"> top camera (rating): </h4>
+		  							<h2 class="inline"> Vivian Traffic (WCC) </h2>
+		  							<br>
+									<h4 class="smlHeading"> top camera (views): </h4>
+		  							<h2 class="inline"> Vivian Traffic (WCC) </h2>
+		  							<br>
+									<h4 class="smlHeading"> AVG rating: </h4>
+		  							<h2 class="stars inline"> &#9733; &#9733; &#9733; &#9733; &#9734; </h2>
+		  							<br>
+		  							<h4 class="smlHeading"> AVG connection: </h4>
+		  							<h2 class="hearts starsMed inline noSelect"> 
+		  								<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite border</i>  	  
+								    </h2>									  							
+		  						</div>
+		  					</div>
+						</div>				  	
+						<div class="mdl-cell mdl-cell--2-col">
+							<h4 class="smlHeading">types of camera</h4>
+							<img src="images/randomGraph1.png">
+							<h4 class="smlHeading">camera up-times</h4>
+							<img src="images/randomGraph2.png">
+						</div>
+					</div>
+				  </div>
+				  <div class="mdl-tabs__panel" id="regional-panel">
+				  	<div class="mdl-grid">
+						<div class="mdl-cell mdl-cell--8-col">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--6-col">
+								  <button id="menu-sort2" class="mdl-button mdl-js-button mdl-button--primary">
+								     Sort by:
+								  </button>
+								  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="menu-sort2">
+									 <li class="mdl-menu__item">Top</li>
+									 <li class="mdl-menu__item">Lowest</li>
+									 <li class="mdl-menu__item">Popular</li>
+								  </ul>
+								</div>
+								<div class="mdl-cell mdl-cell--6-col">
+								  <button id="menu-show2" class="mdl-button mdl-js-button mdl-button--primary">
+								     Show:
+								  </button>
+								  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="menu-show2">
+									 <li class="mdl-menu__item">
+									 	Cameras
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
+											<input type="checkbox" id="switch-4" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+									 <li class="mdl-menu__item">
+							 			Users
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
+											<input type="checkbox" id="switch-5" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+									 <li class="mdl-menu__item">
+							 			Website
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
+											<input type="checkbox" id="switch-6" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+								  </ul>
+								 </div>
+							</div>
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col leftSpacing">
+									<h4 class="smlHeading"> top camera (rating): </h4>
+		  							<h2 class="inline"> Vivian Traffic (WCC) </h2>
+		  							<br>
+									<h4 class="smlHeading"> top camera (views): </h4>
+		  							<h2 class="inline"> Vivian Traffic (WCC) </h2>
+		  							<br>
+									<h4 class="smlHeading"> AVG rating: </h4>
+		  							<h2 class="stars inline"> &#9733; &#9733; &#9733; &#9733; &#9734; </h2>
+		  							<br>
+		  							<h4 class="smlHeading"> AVG connection: </h4>
+		  							<h2 class="hearts starsMed inline noSelect"> 
+		  								<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  	  
+								    </h2>									  							
+		  						</div>
+		  					</div>
+						</div>				  	
+						<div class="mdl-cell mdl-cell--2-col">
+							<h4 class="smlHeading">types of camera</h4>
+							<img src="images/randomGraph3.png">
+							<h4 class="smlHeading">camera up-times</h4>
+							<img src="images/randomGraph2.png">
+						</div>
+					</div>
+				  </div>
+				  <div class="mdl-tabs__panel" id="global-panel">
+				  	<div class="mdl-grid">
+						<div class="mdl-cell mdl-cell--8-col">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--6-col">
+								  <button id="menu-sort3" class="mdl-button mdl-js-button mdl-button--primary">
+								     Sort by:
+								  </button>
+								  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="menu-sort3">
+									 <li class="mdl-menu__item">Top</li>
+									 <li class="mdl-menu__item">Lowest</li>
+									 <li class="mdl-menu__item">Popular</li>
+								  </ul>
+								</div>
+								<div class="mdl-cell mdl-cell--6-col">
+								  <button id="menu-show3" class="mdl-button mdl-js-button mdl-button--primary">
+								     Show:
+								  </button>
+								  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="menu-show3">
+									 <li class="mdl-menu__item">
+									 	Cameras
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
+											<input type="checkbox" id="switch-7" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+									 <li class="mdl-menu__item">
+							 			Users
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
+											<input type="checkbox" id="switch-8" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+									 <li class="mdl-menu__item">
+							 			Website
+										 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-9">
+											<input type="checkbox" id="switch-9" class="mdl-switch__input" checked>
+											<span class="mdl-switch__label"></span>
+										</label>
+									 </li>
+								  </ul>
+								 </div>
+							</div>
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col leftSpacing">
+									<h4 class="smlHeading"> top camera (rating): </h4>
+		  							<h2 class="inline"> Vivian Traffic (WCC) </h2>
+		  							<br>
+									<h4 class="smlHeading"> top camera (views): </h4>
+		  							<h2 class="inline"> Vivian Traffic (WCC) </h2>
+		  							<br>
+									<h4 class="smlHeading"> AVG rating: </h4>
+		  							<h2 class="stars inline"> &#9733; &#9733; &#9733; &#9734; &#9734; </h2>
+		  							<br>
+		  							<h4 class="smlHeading"> AVG connection: </h4>
+		  							<h2 class="hearts starsMed inline noSelect"> 
+		  								<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>  
+								    	<i class="material-icons">favorite</i>   	  
+								    </h2>									  							
+		  						</div>
+		  					</div>
+						</div>				  	
+						<div class="mdl-cell mdl-cell--2-col">
+							<h4 class="smlHeading">types of camera</h4>
+							<img src="images/randomGraph1.png">
+							<h4 class="smlHeading">camera up-times</h4>
+							<img src="images/randomGraph2.png">
+						</div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+      </div>
+
+
+
+      <div id="upload" class="overlay">
+      	<h1 id="HEADING"> // UPLOAD </h1>
+      	<button id="exitUpload" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+		  <i class="material-icons">clear</i> 
+		</button>      	
+      	<br>
+      	<div class="mdl-grid center">
+		  <div class="mdl-cell mdl-cell--4-col">
+		  		<img id='uploadButton' class='profilePic uploadButton' src="images/IcoUploadO.png">
+		  		<span for="uploadButton" class="mdl-tooltip mdl-tooltip--large">Select/Allow Cam Stream</span>
+		  </div>
+		  <div class="mdl-cell mdl-cell--6-col">
+		  		<h2> camera stream properties: </h2>
+		  		<div class="mdl-grid">
+		  			<div class="mdl-cell mdl-cell--12-col">
+						<label id="cctvRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cctv">
+						  <input type="radio" id="cctv" class="mdl-radio__button" name="options" value="1" checked>
+						  <span class="mdl-radio__label">CCTV (static)</span>
+						</label>
+						<span for="cctvRadio" class="mdl-tooltip mdl-tooltip--large">
+							Caution: This requires the camera's long and lat for the map location.
+						</span>
+						<label id="mobileRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="mobile">
+						  <input type="radio" id="mobile" class="mdl-radio__button" name="options" value="2">
+						  <span class="mdl-radio__label">Mobile (roaming)</span>
+						</label>
+						<span for="mobileRadio" class="mdl-tooltip mdl-tooltip--large">
+							Caution: This will use GPS tracking for your map location.
+						</span>
+					</div>
+					<div class="mdl-cell mdl-cell--12-col">
+						<label id="publicRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="public">
+						  <input type="radio" id="public" class="mdl-radio__button" name="share" value="1" checked>
+						  <span class="mdl-radio__label">Public</span>
+						</label>
+						<span for="publicRadio" class="mdl-tooltip mdl-tooltip--large">
+							Anyone will be able to find your stream on the map.
+						</span>
+						<label id="privateRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="private">
+						  <input type="radio" id="private" class="mdl-radio__button" name="share" value="2">
+						  <span class="mdl-radio__label">Private</span>
+						</label>
+						<span for="privateRadio" class="mdl-tooltip mdl-tooltip--large">
+							Only those with a link can view your stream.
+						</span>
+					</div>
+			  		<!-- Textfield with Floating Label -->
+					<!-- <form action="#"> -->
+					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="location" pattern="[A-Z,a-z, ]*">
+					    <label class="mdl-textfield__label red" for="location">heading
+					    </label>
+					  </div>
+					  <div id='showStatic1' class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="location" pattern="[0-9]*">
+					    <label class="mdl-textfield__label red" for="location">latitude</label>
+					  </div>
+					  <div id='showStatic2' class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="location" pattern="[0-9]*">
+					    <label class="mdl-textfield__label red" for="location">longitude</label>
+					  </div>
+					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <textarea class="mdl-textfield__input" type="text" rows= "3" id="location" pattern="[A-Z,a-z, ]*"></textarea>
+					    <label class="mdl-textfield__label red" for="location">description</label>
+					  </div>
+					  <br>
+					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="location" pattern="[A-Z,a-z, ]*">
+					    <label class="mdl-textfield__label red" for="location">tags</label>
+					  </div>
+					<!-- </form> -->
+		  		</div>
+			</div>
+			
+		<div class="mdl-grid center">
+			<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-phone">
+				 <!-- Primary-colored raised button with ripple -->
+				<button class="mdl-button overlayButton mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary shift">
+					UPLOAD
+				</button>
+			</div>
+		</div>
+		</div>
+      </div>
+
+
+
+
+      <div id="stream" class="overlay">
+      	<h2 class="white"> 
+			<button id="gotoPro2" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+				<img class='profilePic mini' src="images/IcoProfileO.png">
+				</button>   
+	      		// VIVIAN TRAFFIC (WCC) 	
+		      	<button id="exitS" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+				<i class="material-icons">clear</i> 
+			</button>       	
+      	</h2>
+      		<span for="gotoPro2" class="mdl-tooltip mdl-tooltip--large">
+			<p class="username"> WCC CCTV </p>
+			<p class="stars"> &#9733; &#9733; &#9733; &#9733; &#9733;  </p> 
+			</span>
+      	<br>
+      	<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--8-col">
+			<div class='vid'>
+			<!-- VIDEO FROM http://www.sample-videos.com/ -->
+				<video controls>
+				  <source src="images/SampleVideo_1280x720.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+			</div>
+			<div class="mdl-cell mdl-cell--1-col">
+		  		<h4 class="smlHeading"> description: </h4>
+		  		<p class="white"> Motorway exit onto Vivian traffic cam, hosted by Wellington City Council  </p>
+		  		<br>
+		  		<i>User Rating:</i> <p class="stars starsMed inline noSelect"> &#9733; &#9733; &#9733; &#9733; &#9733;  </p>
+			    <br>
+			    <form>
+				  <div class="mdl-textfield ratings mdl-js-textfield mdl-textfield--floating-label">
+				    <input class="mdl-textfield__input" type="text" pattern="[1-5]" max="5" min="1" id="rating">
+				    <label class="mdl-textfield__label red" for="rating">rating...</label>
+				    <span class="mdl-textfield__error">Input is not a number!</span>
+				  </div>
+				</form>
+				<br>
+				<i> Connection: </i> <p class="hearts starsMed inline noSelect"> 
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite</i>  
+			    	<i class="material-icons">favorite border</i>  
+			    </p>
+			</div>
+		</div>
+	  </div>
+
+
+
+
+<!-- *************** -->
+
+
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">// filters</span>
+        <nav class="mdl-navigation">
+          <p class="mdl-navigation__link"> UPVOTES
+          	<!-- Default Slider -->
+		    <input class="mdl-slider mdl-js-slider" type="range"
+		      min="0" max="100" value="0" tabindex="0"> </p>
+          <p class="mdl-navigation__link"> VIEWS
+          	<!-- Default Slider -->
+		    <input class="mdl-slider mdl-js-slider" type="range"
+		      min="0" max="100" value="0" tabindex="0"> </p>
+          <p class="mdl-navigation__link"> REGION LOCK
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-10">
+			    <input type="checkbox" id="switch-10" class="mdl-switch__input" checked>
+			    <span class="mdl-switch__label"></span>
+			</label>
+		  </p>
+		  <p class="mdl-navigation__link"> PHONE CAMS
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-11">
+			    <input type="checkbox" id="switch-11" class="mdl-switch__input">
+			    <span class="mdl-switch__label"></span>
+			</label>
+		  </p>
+		  <p class="mdl-navigation__link"> CCTV CAMS
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-12">
+			    <input type="checkbox" id="switch-12" class="mdl-switch__input" checked>
+			    <span class="mdl-switch__label"></span>
+			</label>
+		  </p>
+		  <p class="mdl-navigation__link"> CAMERA-VIEW HEATMAP
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-13">
+			    <input type="checkbox" id="switch-13" class="mdl-switch__input" name="heat">
+			    <span class="mdl-switch__label"></span>
+			</label>
+		  </p> 
+        </nav>
+      </div>
+    </div>
+
+
+
+	<!-- **************   ADDING GOOGLE MAPS   *************** -->
+	<div id="map"></div>
+    <script>
+      function initMap() {
+      	$("#markerSide").hide();
+
+        var uluru = {lat: -41.29566342, lng: 174.7754699};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+
+		var showSide = false;
+		console.log(showSide);
+
+		// On marker click, zoom, show side box
+        marker.addListener('click', function() {
+	         map.setZoom(16);
+	         map.setCenter(marker.getPosition());
+        
+	        if ($("#markerSide").is(":hidden")) {
+	        	console.log(showSide);
+	        	$("#markerSide").slideToggle(200);
+	        	showSide = false;
+	        }
+	    });
+
+        // On map click, if box is visible, hide
+	    map.addListener('click', function() {
+	         if ($("#markerSide").is(":visible")) {
+	         	$("#markerSide").hide();
+	        	showSide = true;
+	         }
+         });
+      }
+    </script>
+
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3mTicCQ4X0aM-bSjolHFfzNVNR3DSlus&callback=initMap">
+    </script> 
+
+    <span for="marker" class="mdl-tooltip mdl-tooltip--large">Select/Allow Cam Stream</span>
+
+	</div>
+		<!-- Javascript links -->
+		<script src="js/script.js"> </script>
+		<script src="js/loading.js"> </script>
+		<!-- ScrollReveal link -->
+		<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+	</body>
+</html>			
