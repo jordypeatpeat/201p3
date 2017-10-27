@@ -34,6 +34,11 @@ var userPos;
 
             userPos= {lat: pos.lat, lng: pos.lng};
 
+            var userMarker = new google.maps.Marker({
+              position: userPos,
+              map: map
+            });
+
 
             console.log(users[k].name);
             //console.log(users[k].pos.lat);
@@ -321,10 +326,6 @@ var userPos;
          }
         ref.push(data);
 
-        var userMarker = new google.maps.Marker({
-          position: userPos,
-          map: map
-        });
 
 
         infoWindow.setPosition(pos);
