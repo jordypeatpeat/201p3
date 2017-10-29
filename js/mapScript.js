@@ -341,6 +341,8 @@ function removeBounce() {
   var users;
   var keys;
   var k;
+  var storedPosLat = [];
+  var storedPosLng = [];
 
   ref.on('value', gotData, errData);
 
@@ -356,6 +358,9 @@ function removeBounce() {
             var pos= users[k].pos;
 
             userPos= {lat: pos.lat, lng: pos.lng};
+
+            storedPosLat.push(pos.lat);
+            storedPosLng.push(pos.lng);
 
             userMarker = new google.maps.Marker({
               position: userPos,
@@ -401,6 +406,7 @@ function removeBounce() {
 
           }
          }
+
 
          function errData(err){
           console.log('Error!');
@@ -450,58 +456,21 @@ function geolocate() {
             pos : pos
          }
 
+        checkPosLat = storedPosLat.indexOf(pos.lat);
+        checkPosLng = storedPosLng.indexOf(pos.lng);
 
-        ref.child("users").orderByChild("pos").equalTo(pos).once("value",snapshot => {
-            const userData = snapshot.val();
-            if (userData){
-              infoWindow.setPosition(pos);
-              infoWindow.setContent('That cam already exists!');
-              infoWindow.open(map);
-            }
-            else {
-              ref.push(data);
+        if (!(checkPosLat === -1) && checkPosLng === checkPosLat){
+          infoWindow.setPosition(pos);
+          infoWindow.setContent("There's already a cam in this location!");
+          infoWindow.open(map);              
+        }
 
-              infoWindow.setPosition(pos);
-              infoWindow.setContent('Location found, cam added!');
-              infoWindow.open(map);
-            }
-        });
-
-        // ref.once('value', function(snapshot) {
-        //   if (!snapshot.hasChild(pos.lat)) {
-        //       ref.push(data);
-
-        //       infoWindow.setPosition(pos);
-        //       infoWindow.setContent('location found');
-        //       infoWindow.open(map);
-
-        //       alert("Added!");
-        //   }
-        //   else {
-        //       alert("That cam already exists");
-        //   }
-        // });
-
-         // Checks to see if submission is a duplicate
-          // var alreadyExists = false;
-          // for (var i = 0; i < keys.length; i ++){
-          //   var k = keys[i];
-          //   var comparePos= users[k].pos;
-          //   console.log(pos);
-          //   console.log(comparePos);
-
-          //   if (comparePos.lat == pos.lat){
-          //     infoWindow.setPosition(pos);
-          //     infoWindow.setContent('This cam location already exists');
-          //     infoWindow.open(map);  
-          //     alreadyExists = true;   
-          //     break;         
-          //   }
-
-          // }
-          // if (!alreadyExists){
-          //    ref.push(data);
-          // }
+        else {
+          ref.push(data);
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found, cam added!');
+          infoWindow.open(map);
+        }
 
 
 
@@ -532,6 +501,23 @@ function geolocate() {
             public: public,
             pos : pos
          }
+
+        checkPosLat = storedPosLat.indexOf(pos.lat);
+        checkPosLng = storedPosLng.indexOf(pos.lng);
+
+        if (!(checkPosLat === -1) && checkPosLng === checkPosLat){
+          infoWindow.setPosition(pos);
+          infoWindow.setContent("There's already a cam in this location!");
+          infoWindow.open(map);              
+        }
+
+        else {
+          ref.push(data);
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found, cam added!');
+          infoWindow.open(map);
+        }
+
 
   }
 }
