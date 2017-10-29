@@ -477,21 +477,22 @@
       	<div class="mdl-grid center">
 		  <div class="mdl-cell mdl-cell--4-col">
 		  		<img id='uploadButton' class='profilePic uploadButton' src="images/IcoUploadO.png">
-		  		<span for="uploadButton" class="mdl-tooltip mdl-tooltip--large">Select/Allow Cam Stream</span>
+		  		<span for="uploadButton" class="mdl-tooltip mdl-tooltip--large">Cloud-hosted Stream</span>
 		  </div>
 		  <div class="mdl-cell mdl-cell--6-col">
 		  		<h2> camera stream properties: </h2>
+		  	<form action="#">
 		  		<div class="mdl-grid">
 		  			<div class="mdl-cell mdl-cell--12-col">
 						<label id="cctvRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="cctv">
-						  <input type="radio" id="cctv" class="mdl-radio__button" name="options" value="1" checked>
+						  <input type="radio" id="cctv" class="mdl-radio__button" name="options" value="1" checked required>
 						  <span class="mdl-radio__label">CCTV (static)</span>
 						</label>
 						<span for="cctvRadio" class="mdl-tooltip mdl-tooltip--large">
 							Caution: This requires the camera's long and lat for the map location.
 						</span>
 						<label id="mobileRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="mobile">
-						  <input type="radio" id="mobile" class="mdl-radio__button" name="options" value="2">
+						  <input type="radio" id="mobile" class="mdl-radio__button" name="options" value="2" required>
 						  <span class="mdl-radio__label">Mobile (roaming)</span>
 						</label>
 						<span for="mobileRadio" class="mdl-tooltip mdl-tooltip--large">
@@ -500,14 +501,14 @@
 					</div>
 					<div class="mdl-cell mdl-cell--12-col">
 						<label id="publicRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="public">
-						  <input type="radio" id="public" class="mdl-radio__button" name="share" value="1" checked>
+						  <input type="radio" id="public" class="mdl-radio__button" name="share" value="1" checked required>
 						  <span class="mdl-radio__label">Public</span>
 						</label>
 						<span for="publicRadio" class="mdl-tooltip mdl-tooltip--large">
 							Anyone will be able to find your stream on the map.
 						</span>
 						<label id="privateRadio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="private">
-						  <input type="radio" id="private" class="mdl-radio__button" name="share" value="2">
+						  <input type="radio" id="private" class="mdl-radio__button" name="share" value="2" required>
 						  <span class="mdl-radio__label">Private</span>
 						</label>
 						<span for="privateRadio" class="mdl-tooltip mdl-tooltip--large">
@@ -515,41 +516,41 @@
 						</span>
 					</div>
 			  		<!-- Textfield with Floating Label -->
-					<!-- <form action="#"> -->
 					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					    <input class="mdl-textfield__input" type="text" id="location" pattern="[A-Z,a-z, ]*">
-					    <label class="mdl-textfield__label red" for="location">heading
+					    <input class="mdl-textfield__input" type="text" id="inheading" pattern="[A-Z,a-z, ]*" required>
+					    <label class="mdl-textfield__label red" for="inheading">heading
 					    </label>
 					  </div>
 					  <div id='showStatic1' class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					    <input class="mdl-textfield__input" type="text" id="location" pattern="[0-9]*">
-					    <label class="mdl-textfield__label red" for="location">latitude</label>
+					    <input class="mdl-textfield__input" type="text" id="lat" pattern="[0-9]*" required>
+					    <label class="mdl-textfield__label red" for="lat">latitude</label>
 					  </div>
 					  <div id='showStatic2' class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					    <input class="mdl-textfield__input" type="text" id="location" pattern="[0-9]*">
-					    <label class="mdl-textfield__label red" for="location">longitude</label>
+					    <input class="mdl-textfield__input" type="text" id="long" pattern="[0-9]*" required>
+					    <label class="mdl-textfield__label red" for="long">longitude</label>
 					  </div>
 					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					    <textarea class="mdl-textfield__input" type="text" rows= "3" id="location" pattern="[A-Z,a-z, ]*"></textarea>
-					    <label class="mdl-textfield__label red" for="location">description</label>
+					    <textarea class="mdl-textfield__input" type="text" rows= "3" id="description" pattern="[A-Z,a-z, ]*" required></textarea>
+					    <label class="mdl-textfield__label red" for="description">description</label>
 					  </div>
 					  <br>
 					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					    <input class="mdl-textfield__input" type="text" id="location" pattern="[A-Z,a-z, ]*">
-					    <label class="mdl-textfield__label red" for="location">tags</label>
+					    <input class="mdl-textfield__input" type="text" id="tags" pattern="[A-Z,a-z, ]*" required>
+					    <label class="mdl-textfield__label red" for="tags">tags</label>
 					  </div>
-					<!-- </form> -->
+
 		  		</div>
 			</div>
 			
 		<div class="mdl-grid center">
 			<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-phone">
 				 <!-- Primary-colored raised button with ripple -->
-				<button id="submitButton" class="mdl-button overlayButton mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary shift">
-					UPLOAD
+				<button id="submitButton" class="mdl-button overlayButton mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary shift" type="submit">
+						UPLOAD
 				</button>
 			</div>
 		</div>
+		</form>
 		</div>
       </div>
 

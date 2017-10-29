@@ -2,6 +2,8 @@ var userPos;
 var startGeo;
 var map;
 var infoWindow;
+var userMarker;
+var image;
 
 // ADDITIONAL CODE LAYOUT FROM
 // https://stackoverflow.com/questions/28998743/creating-a-button-that-shows-my-current-location-using-geolocation
@@ -270,19 +272,46 @@ function initMap() {
     var geolocationDiv = document.getElementById('submitButton');
     var geolocationControl = new GeolocationControl(geolocationDiv, map);
 
-    //map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(geolocationDiv);
+    image = 'images/markerIcon.png'
+
+
+
+
+    google.maps.event.addListener(map, "click", function (e) {
+      //lat and lng is available in e object
+      var latLng = e.latLng;
+      // console.log(latLng);
+    });
+
 }
 
 function GeolocationControl(controlDiv, map) {
-
-
       // Set CSS for the control button
     var controlUI = document.getElementById('submitButton');
-
 
     // Setup the click event listeners to geolocate user
     google.maps.event.addDomListener(controlUI, 'click', geolocate);
 }
+
+
+
+function startBounce() {
+  if (userMarker.getAnimation() !== null) {
+    userMarker.setAnimation(null);
+  } else {
+    userMarker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+
+function removeBounce() {
+  if (userMarker.getAnimation() !== null) {
+    userMarker.setAnimation(null);
+  } else {
+    userMarker.setAnimation(null);
+  }  
+}
+
+
 
 // ***********************************************
 
@@ -309,34 +338,43 @@ function GeolocationControl(controlDiv, map) {
   var database = firebase.database();
   var ref = database.ref('users');
 
+  var users;
+  var keys;
+  var k;
+
   ref.on('value', gotData, errData);
-   
+
          function gotData(data){
-          console.log('data object', data.val());
-          var users = data.val();
-          var keys = Object.keys(users)
-          console.log(keys);
+          // console.log('data object', data.val());
+          users = data.val();
+          keys = Object.keys(users)
+          // console.log(keys);
           for (var i = 0; i < keys.length; i ++){
-            var k = keys[i];
+            k = keys[i];
 
             var name = users[k].name;
             var pos= users[k].pos;
 
             userPos= {lat: pos.lat, lng: pos.lng};
 
-            var userMarker = new google.maps.Marker({
+            userMarker = new google.maps.Marker({
               position: userPos,
-              map: map
+              map: map,
+              icon: image,
+              animation: google.maps.Animation.DROP
             });
 
+            userMarker.addListener('click', startBounce);
+            map.addListener('click', removeBounce);
+            document.getElementById("streamButton").addEventListener('click', removeBounce);
 
             //Bool to check whether side box is visible
             var showSide = false;
 
-            // On marker click, zoom, show side box
+            // On marker click: zoom to marker, show side box
               userMarker.addListener('click', function() {
                    map.setZoom(16);
-                   map.setCenter(userMarker.getPosition());
+                   map.panTo(userMarker.position);
                 
                   if ($("#markerSide").is(":hidden")) {
                     $("#markerSide").slideToggle(200);
@@ -353,10 +391,10 @@ function GeolocationControl(controlDiv, map) {
                  });
 
 
-            console.log(users[k].name);
+            // console.log(users[k].name);
             //console.log(users[k].pos.lat);
             //console.log(users[k].pos.lng);
-            console.log(userPos);
+            // console.log(userPos);
             // var name = users[k].name;
             // console.log(name, pos.lat);
            
@@ -378,33 +416,95 @@ function GeolocationControl(controlDiv, map) {
 // ***************  TRY HTML5 GEOLOCATION  *************
 function geolocate() {
   
-  // If 'mobile' is selected, use geolocation to place marker
+  
   var radioValue = document.getElementById("mobile").checked;
-  console.log(radioValue);
+  //console.log(radioValue);
+
+
+  // If 'mobile' is selected, use geolocation to place marker - else use lat/lng
   if (radioValue){
-
     // Close the upload section before locating
-    $("#upload").slideToggle("slow");
-    if (navigator.geolocation) {
+    $("#upload").slideToggle(200);
 
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
+        
+        // Getting the inputs and putting them in firebase
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        console.log('pos', pos);
+        var public = document.getElementById("public").checked;
+        var heading = document.getElementById("inheading").value;
+        var desc = document.getElementById("description").value;
+        var tags = document.getElementById("tags").value;
+
+        // console.log('heading', heading);
+        // console.log('pos', pos);
 
         var data =  {
-            name:"Someone's name",
+            heading: heading,
+            desc: desc,
+            tags: tags,
+            public: public,
             pos : pos
          }
-        ref.push(data);
+
+
+        ref.child("users").orderByChild("pos").equalTo(pos).once("value",snapshot => {
+            const userData = snapshot.val();
+            if (userData){
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('That cam already exists!');
+              infoWindow.open(map);
+            }
+            else {
+              ref.push(data);
+
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('Location found, cam added!');
+              infoWindow.open(map);
+            }
+        });
+
+        // ref.once('value', function(snapshot) {
+        //   if (!snapshot.hasChild(pos.lat)) {
+        //       ref.push(data);
+
+        //       infoWindow.setPosition(pos);
+        //       infoWindow.setContent('location found');
+        //       infoWindow.open(map);
+
+        //       alert("Added!");
+        //   }
+        //   else {
+        //       alert("That cam already exists");
+        //   }
+        // });
+
+         // Checks to see if submission is a duplicate
+          // var alreadyExists = false;
+          // for (var i = 0; i < keys.length; i ++){
+          //   var k = keys[i];
+          //   var comparePos= users[k].pos;
+          //   console.log(pos);
+          //   console.log(comparePos);
+
+          //   if (comparePos.lat == pos.lat){
+          //     infoWindow.setPosition(pos);
+          //     infoWindow.setContent('This cam location already exists');
+          //     infoWindow.open(map);  
+          //     alreadyExists = true;   
+          //     break;         
+          //   }
+
+          // }
+          // if (!alreadyExists){
+          //    ref.push(data);
+          // }
 
 
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('location found');
-        infoWindow.open(map);
         map.setCenter(pos);
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
@@ -413,6 +513,26 @@ function geolocate() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
+  }
+  else {
+        // Getting the inputs and putting them in firebase
+        var pos = {
+          lat: heading = document.getElementById("lat").value,
+          lng: heading = document.getElementById("lng").value,
+        };
+        var public = document.getElementById("public").checked;
+        var heading = document.getElementById("inheading").value;
+        var desc = document.getElementById("description").value;
+        var tags = document.getElementById("tags").value;
+
+        var data =  {
+            heading: heading,
+            desc: desc,
+            tags: tags,
+            public: public,
+            pos : pos
+         }
+
   }
 }
 
