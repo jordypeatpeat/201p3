@@ -253,3 +253,18 @@ $('#streamButton, #exitS').click(function(){
 });
 
 
+$('#submitButton').click(function(){
+        if (document.getElementById("mobile").checked) {          
+            // replace css with '!important' and timer of 200 millis
+            setTimeout(function(){
+                $( '.mdl-layout__header' ).each(function () {
+                        this.style.setProperty( 'background-color', 'rgba(0,0,0,0)', 'important' );
+                });
+            }, 200);
+        }
+        else {
+            $( '.mdl-layout__header' ).each(function () {
+                this.style.setProperty( 'background-color', 'rgba(0,0,0,0.75)', 'important' );
+            });           
+        }
+});
