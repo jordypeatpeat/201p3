@@ -15,6 +15,7 @@ function initMap() {
     var mapOptions = {
         center: new google.maps.LatLng(-41.295077, 174.775808),
         zoom: 5,
+        disableDefaultUI: true,
         styles: [
                   {
                     "elementType": "geometry",
